@@ -13175,8 +13175,8 @@ d0w6rmurAAAAAElFTkSuQmCC
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (m)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="c1"># The distribution for Subscriber is right negative skewed. Median &lt; Mean</span>
-<span class="c1"># The distribution for Customer is right negative skewed. Mode &lt; Median &lt; Mean</span>
+<span class="c1"># The distribution for Subscriber is right skewed. Median &lt; Mean</span>
+<span class="c1"># The distribution for Customer is right skewed. Mode &lt; Median &lt; Mean</span>
 </pre></div>
 
 </div>
@@ -13642,29 +13642,32 @@ wMyspBwAzMxKygHAzKyk/j+20FaURBasPwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># QUESTION 1: </span>
-<span class="c1"># Explore Chicago city data based on monthly metrics </span>
-<span class="c1"># to derive the number of trips made each month.</span>
-
-<span class="c1"># QUESTION 2: </span>
-<span class="c1"># Explore Chicago city data based on subscribers and customers, </span>
-<span class="c1"># to derive the ratio of trips made by subscribers to customers each month.</span>
-
-<span class="n">city</span> <span class="o">=</span> <span class="s2">&quot;Chicago&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city</span> <span class="o">=</span> <span class="s2">&quot;Chicago&quot;</span>
 <span class="n">chicago_file</span> <span class="o">=</span> <span class="n">clean_files</span><span class="p">[</span><span class="n">city</span><span class="p">]</span>
 <span class="n">durations</span> <span class="o">=</span> <span class="n">month_based_data</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;durations - &quot;</span><span class="p">,</span> <span class="n">durations</span><span class="p">)</span>
 
+<span class="c1"># QUESTION 1: </span>
+<span class="c1"># Explore Chicago city data based on monthly metrics </span>
+<span class="c1"># to derive the number of trips made each month.</span>
 <span class="n">duration_x_axis_data</span> <span class="o">=</span> <span class="n">durations</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">duration_y_axis_data</span> <span class="o">=</span> <span class="n">durations</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="c1"># plt.hist(subscriber_durations, range = (min(subscriber_durations), 75))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">duration_x_axis_data</span><span class="p">,</span> <span class="n">duration_y_axis_data</span><span class="p">)</span>
 <span class="c1"># plt.ylim([0, 75])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Ridership / Month: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">city</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (month)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
+<span class="c1"># INSIGHTS: </span>
+<span class="c1"># The maximum number of trips made was in the month of September i.e. 32699 trips.</span>
+<span class="c1"># The minimum number of trips made was in the month of January i.e. 10179 trips.</span>
+<span class="c1"># The chart is left skewed.</span>
+
+
+<span class="c1"># QUESTION 2: </span>
+<span class="c1"># Explore Chicago city data based on subscribers and customers, </span>
+<span class="c1"># to derive the ratio of trips made by subscribers to customers each month.</span>
 <span class="n">ratio_based</span> <span class="o">=</span> <span class="n">ratio_based_data</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ratio_based - &quot;</span><span class="p">,</span> <span class="n">ratio_based</span><span class="p">)</span>
 
@@ -13676,6 +13679,11 @@ wMyspBwAzMxKygHAzKyk/j+20FaURBasPwAAAABJRU5ErkJggg==
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Subscriber to Customer Ratio / Month: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">city</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (month)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># INSIGHTS: </span>
+<span class="c1"># The maximum ratio between Subscriber and Customer was in the month of September. 19.5</span>
+<span class="c1"># The minimum ratio between Subscriber and Customer was in the month of July. 5.9</span>
+<span class="c1"># The chart is non-symmetrical, bimodal.</span>
 </pre></div>
 
 </div>
@@ -14037,7 +14045,7 @@ PDF (.pdf). You may need additional packages or software to perform these export
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">call</span>
@@ -14054,7 +14062,7 @@ PDF (.pdf). You may need additional packages or software to perform these export
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[32]:</div>
+<div class="prompt output_prompt">Out[1]:</div>
 
 
 
